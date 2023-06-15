@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 8px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My dinosaur's shopping list</h1>
+    <img src="./dinosaur.png" alt="" />
+    <br></br>
+    
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item" />
+      <button onclick="addItemClick()">Add item</button>
+    </div>
+
+    <ul></ul>
+
+    <script>
+      const ulRef = document.querySelector("ul");
+      const inputRef = document.getElementById("item");
+      
+      function addItemClick() {
+        var strinput = inputRef.value;
+        alert(strinput);
+        inputRef.value = "";
+
+        var li = document.createElement("li");
+        var span = document.createElement("span");
+        span.textContent = strinput;
+        var button = document.createElement("button");
+        button.textContent = "Delete";
+        
+        li.appendChild(span);
+        li.appendChild(button);
+        ulRef.appendChild(li);
+        
+        button.onclick = function () {
+          ulRef.removeChild(li);
+        };
+
+        inputRef.focus();
+      }
+    </script>
+  </body>
+</html>
